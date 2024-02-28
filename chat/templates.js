@@ -1,3 +1,6 @@
+import MarkdownIt from 'markdown-it';
+import * as htmlToTextModule from 'html-to-text'; //The html-to-text library may not support ESM
+
 export function MDUserMsg(toUser, agentid, content) {
 
   const markdown = JSON.stringify({ "content": content });
@@ -12,8 +15,13 @@ export function MDUserMsg(toUser, agentid, content) {
 };
 
 export function TextUserMsg(toUser, agentid, content) {
+  const md = new MarkdownIt();
 
-  const text = JSON.stringify({ "content": content });
+  // Convert Markdown content to HTML and then conver to plain text
+  const htmlContent = md.render(content);
+  const plainTextContent = htmlToTextModule.convert(htmlContent);
+
+  const text = JSON.stringify({ "content": plainTextContent  });
   return `{
     "touser": "${toUser}",
     "msgtype": "text",
