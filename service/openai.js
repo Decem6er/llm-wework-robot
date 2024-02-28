@@ -30,7 +30,7 @@ export default getAIChat;*/
 
 import { Configuration, OpenAIApi } from "openai";
 
-const models = ['text-davinci-003','code-davinci-002','gpt-3.5-turbo','gpt-4'];
+const models = ['text-davinci-003','code-davinci-002','gpt-3.5-turbo','gpt-4','gemini-pro'];
 
 
 export class OpenAI {
@@ -39,6 +39,12 @@ export class OpenAI {
 
     constructor() {
         this.#configuration = new Configuration( {apiKey: process.env.OPENAI_API_KEY} );
+        
+        // Add proxy
+        if (process.env.OPENAI_PROXY_URL) {
+            this.#configuration.basePath = `https://${process.env.OPENAI_PROXY_URL}/v1`;
+        }
+
         this.#openai = new OpenAIApi(this.#configuration);
     }
 
