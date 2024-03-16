@@ -1,4 +1,4 @@
-# 零代码 一键部署chatGPT到企业微信应用 无须翻墙<br/>
+# 零代码 一键部署chatGPT到企业微信应用<br/>
 
 <div align="center">
      <img src="https://github.com/sytpb/chatgpt-wework-robot/assets/12178686/13e3a894-75e2-4c3d-a4fa-5565940121fa" width="120px">
@@ -122,6 +122,7 @@
 | TOKEN                             |                                |                                                                                                                                           |
 | MSG_TYPE                          |  xml                           |     xml 或者 markdown, xml:支持微信里使用                                                                                                  |
 | PORT                              |  6060                          |     可以改成其他                                                                                                                           |
+|OPENAI_PROXY                       |                                |      如果使用自定义的OpenAI API代理服务器，请在此处填写URL，如api.openai.com
 
 
 如图所示，将上面的字段信息填入，然后点击Apply。 
